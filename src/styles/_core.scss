@@ -1,5 +1,5 @@
 .simple-notification {
-  background: #08c;
+  background: $colour-neutral;
   bottom: 0;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -12,9 +12,9 @@
 }
 
 .simple-notification.good {
-  background: #5abe57;
+  background: $colour-good;
 }
 
 .simple-notification.bad {
-  background: #c00;
+  background: $colour-bad;
 }

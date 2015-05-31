@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         clean: ['dist'],
 
         mkdir: {
-            all: {
+            default: {
                 options: {
                     create: ['dist']
                 }
@@ -15,10 +15,32 @@ module.exports = function(grunt) {
         },
 
         copy: {
-            main: {
+            default: {
                 files: [
-                    {expand: true, cwd: 'src', src: ['**/*'], dest: 'dist/', flatten: true}
+                    {expand: true, cwd: 'src/scripts', src: ['*.js'], dest: 'dist/', flatten: true}
                 ]
+            }
+        },
+
+        sass: {
+            options: {
+                sourceMap: false
+            },
+            default: {
+                options: {
+                    outputStyle: 'expanded'
+                },
+                files: {
+                    'dist/simple-notifications.css': 'src/styles/main.scss'
+                }
+            },
+            minified: {
+                options: {
+                    outputStyle: 'compressed'
+                },
+                files: {
+                    'dist/simple-notifications.min.css': 'src/styles/main.scss'
+                }
             }
         },
 
@@ -31,12 +53,12 @@ module.exports = function(grunt) {
                     mangle: true
                 },
                 files: {
-                    'dist/simple-notifications.min.js': 'src/simple-notifications.js'
+                    'dist/simple-notifications.min.js': 'dist/simple-notifications.js'
                 }
             }
         }
 
     });
 
-    grunt.registerTask('default', ['clean', 'mkdir', 'uglify', 'copy']);
+    grunt.registerTask('default', ['clean', 'mkdir', 'sass', 'copy', 'uglify']);
 };
