@@ -13,8 +13,6 @@ bower install simple-notifications
 
 ..or clone this repo.
 
-Include `dist/simple-notifications.min.js` and `dist/simple-notifications.css` on your page.
-
 In the `dist` folder, you'll find `simple-notifications.js` and `simple-notifications.css`. Include those on your page. There are also
 minified versions available in the same folder.
 
