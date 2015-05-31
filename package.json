@@ -1,0 +1,27 @@
+{
+  "name": "simple-notifications",
+  "version": "1.0.0",
+  "description": "Simple notification utility.",
+  "main": "none",
+  "scripts": {
+    "test": "none"
+  },
+  "dependencies": {
+      "grunt": "*",
+      "grunt-contrib-clean": "*",
+      "grunt-contrib-copy": "*",
+      "grunt-contrib-uglify": "^0.6.0",
+      "grunt-mkdir": "*",
+      "matchdep": "^0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaundon/simple-notifications.git"
+  },
+  "author": "Shaun Donnelly <shaundonnelly@gmail.com> (http://sdonnelly.co.uk/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shaundon/simple-notifications/issues"
+  },
+  "homepage": "https://github.com/shaundon/simple-notifications"
+}

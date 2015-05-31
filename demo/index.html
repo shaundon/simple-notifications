@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Simple Notifications Demo</title>
+
+    <link href="/dist/simple-notifications.css" rel="stylesheet">
+    <script src="/dist/simple-notifications.min.js"></script>
+
+    <script>
+        function testNotification(type) {
+            SimpleNotifications.create("Test Notification", type);
+        }
+    </script>
+
+    <style>
+        body {
+            background: #666;
+            color: #fff;
+            font-family: Helvetica, Arial, san-serif;
+            margin: 50px auto;
+            text-align: center;
+            width: 60%;
+        }
+        section {
+            margin: 10px 0;
+        }
+        button {
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            min-width: 300px;
+            padding: 10px 5px;
+        }
+        button:hover {
+            background: #fff;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Test Notification Page</h1>
+
+    <section>
+        <button onclick="testNotification()">Create Neutral Notification</button>
+    </section>
+
+    <section>
+        <button onclick="testNotification('good')">Create Positive Notification</button>
+    </section>
+
+    <section>
+        <button onclick="testNotification('bad')">Create Negative Notification</button>
+    </section>
+
+
+</body>
+</html>
