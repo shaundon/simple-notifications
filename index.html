@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Notifications by shaundon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Simple Notifications</h1>
+      <h2 class="project-tagline">Very lightweight notifications for your webpage.</h2>
+      <a href="https://github.com/shaundon/simple-notifications" class="btn">View on GitHub</a>
+      <a href="https://github.com/shaundon/simple-notifications/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/shaundon/simple-notifications/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="simple-notifications" class="anchor" href="#simple-notifications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Notifications</h1>
+
+<p>A very lightweight notifications utility. The minified code comes in at about 1KB, there
+are zero external dependencies, and everything is completely customisable.</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>Either install via Bower:</p>
+
+<pre><code>bower install simple-notifications
+</code></pre>
+
+<p>..or clone this repo.</p>
+
+<p>In the <code>dist</code> folder, you'll find <code>simple-notifications.js</code> and <code>simple-notifications.css</code>. Include those on your page. There are also
+minified versions available in the same folder.</p>
+
+<p>Create a notification with:</p>
+
+<pre><code>SimpleNotifications.create("message", "class");
+</code></pre>
+
+<p>Notification will automatically disappear after X seconds (currently set to 3 seconds).</p>
+
+<p><code>message</code> is a string of what you'd like the notification to say. Use either a standard string or HTML.</p>
+
+<p><code>class</code> is an additional class to give the notification. Leave blank for a neutral notification, use <code>good</code> for a green notification, and <code>bad</code> for a red notification.</p>
+
+<h3>
+<a id="advanced-options" class="anchor" href="#advanced-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advanced options</h3>
+
+<p>By default, notifications stay on screen for 3 seconds, have the class <em>simple-notification</em>, and are appended to the <code>body</code> element. You can override these settings by calling:</p>
+
+<pre><code>SimpleNotifications.setDefaults({
+    timeout: &lt;new timeout in milliseconds&gt;,
+    className: &lt;new class to use instead of 'simple-notification'&gt;,
+    insertLocation: &lt;DOM element to append notifications to. Use query selector syntax, e.g. #id or .class&gt;
+});
+</code></pre>
+
+<p>Omit either of the properties to leave the default in place.</p>
+
+<h2>
+<a id="compiling-from-source" class="anchor" href="#compiling-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compiling from source</h2>
+
+<p>All the source files are in <code>src</code>. You can generate the stylesheets and minified files by running Grunt. Just do:</p>
+
+<pre><code>npm install -g grunt-cli &amp;&amp; npm install &amp;&amp; grunt
+</code></pre>
+
+<p>..which will install Grunt globally on your system, install local NPM dependencies, then run Grunt.</p>
+
+<h2>
+<a id="running-the-demo" class="anchor" href="#running-the-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running the demo</h2>
+
+<p>There's a demo server built in for running the demo. Just run:</p>
+
+<pre><code>grunt demo
+</code></pre>
+
+<p>..to run the demo and open it in your favourite browser.</p>
+
+<h2>
+<a id="theming" class="anchor" href="#theming" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theming</h2>
+
+<p>Creating your own theme is very easy. All it requires is some custom CSS, and one line of JavaScript code on your page to apply it.</p>
+
+<p>Your theme should look something like this:</p>
+
+<pre><code>.your-custom-theme {
+    /* Styles for your theme. */
+}
+
+.your-custom-theme.visible {
+    /* 
+    It's very important that you include this.
+    Your notification's CSS should make it invisible by default, and should only be made
+    visible with the addition of this class. How you do that is completely up to you.
+    For example, your theme might have 'opacity: 0' and then .visible changes that to
+    'opacity: 1'.
+    This is required so that CSS transitions work correctly - you could set 'transition: all 0.5s linear'
+    on your theme, and then when the 'visible' class is automatically applied by the script, you'll
+    see it appear with a nice animation.
+    */
+}
+
+.your-custom-theme.modifier {
+    /* 
+    Here's where you can add a modifier to change notifications. For example,
+    the default theme has a .good class which makes the notification green.
+    You can then specify this as an argument when creating a notification to apply it.
+    */
+}
+</code></pre>
+
+<p>Now you just have to apply the theme. To do this, you can use <code>SimpleNotifications.setDefaults()</code> (fully documented above).</p>
+
+<p>In the case of this theme, you'd call it like:</p>
+
+<pre><code>SimpleNotifications.setDefaults({
+    className: 'your-custom-theme'
+});
+</code></pre>
+
+<p>From now on, your custom class will be used whenever a notification is created.</p>
+
+<p>If you get stuck making a theme, take a look at <code>dist/simple-notifications.css</code> and copy the default one as a starting point.</p>
+
+<h2>
+<a id="browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser support.</h2>
+
+<p>IE10 or higher, plus all the others. This is mainly because of support for <code>document.querySelector</code> and <code>element.classList</code>. </p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/shaundon/simple-notifications">Simple Notifications</a> is maintained by <a href="https://github.com/shaundon">shaundon</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
