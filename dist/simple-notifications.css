@@ -1,6 +1,12 @@
+/*
+Notification needs to be invisible by default, as once it's in the DOM,
+the 'visible' class will be added to it, which makes it appear with a CSS transition.
+
+In this case, the 'bottom' property is being used to keep the notification off screen until
+it's visible.
+*/
 .simple-notification {
   background: #08c;
-  bottom: -150px;
   box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -10,11 +16,14 @@
   position: fixed;
   text-align: center;
   width: 100%;
-  -webkit-transition: bottom 0.2s linear;
-  -ms-transition: bottom 0.2s linear;
-  -moz-transition: bottom 0.2s linear;
-  -o-transition: bottom 0.2s linear;
-  transition: bottom 0.2s linear;
+  bottom: -150px;
+  /* Puts it off screen by default. */
+  -webkit-transition: bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Transition applied when 'visible' class is added. */
 }
 
 .simple-notification.visible {
