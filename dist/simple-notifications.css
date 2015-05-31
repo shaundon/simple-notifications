@@ -1,6 +1,7 @@
 .simple-notification {
   background: #08c;
   bottom: 0;
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
   left: 0;

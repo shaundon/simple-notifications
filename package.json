@@ -9,6 +9,7 @@
   "dependencies": {
     "grunt": "*",
     "grunt-contrib-clean": "*",
+    "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-copy": "*",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-mkdir": "*",

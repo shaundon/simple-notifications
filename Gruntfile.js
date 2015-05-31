@@ -56,9 +56,25 @@ module.exports = function(grunt) {
                     'dist/simple-notifications.min.js': 'dist/simple-notifications.js'
                 }
             }
+        },
+
+        // Test server, used to fire up the demo page easily.
+        connect: {
+            server: {
+                options: {
+                    port: 7428,
+                    keepalive: true,
+                    open: 'http://localhost:7428/demo'
+                }
+            }
         }
 
     });
 
-    grunt.registerTask('default', ['clean', 'mkdir', 'sass', 'copy', 'uglify']);
+    grunt.registerTask('build', ['clean', 'mkdir', 'sass', 'copy', 'uglify']);
+    grunt.registerTask('demo', ['build', 'connect']);
+
+    grunt.registerTask('default', ['build']);
+
+
 };

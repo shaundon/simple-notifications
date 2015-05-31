@@ -1,27 +1,38 @@
 var SimpleNotifications = {
-	constants: {
-		notificationOnScreenTime: 3000
+	_constants: {
+
+        /*
+        All of these can be overridden in the 'setDefaults'
+        function.
+         */
+
+        timeout: 3000,
+        className: 'simple-notification'
 	},
+    setDefaults: function(defaults) {
+        SimpleNotifications._constants.timeout = defaults.timeout || SimpleNotifications._constants.timeout;
+        SimpleNotifications._constants.className = defaults.className || SimpleNotifications._constants.className;
+    },
 	create: function(message, className) {
-		var id = SimpleNotifications.generateId();
+		var id = SimpleNotifications._generateId();
 
         // HTML of notification.
-		var html = "<div id='" + id + "' class='simple-notification " + className + "'>" + message + "</div>";
+		var html = "<div id='" + id + "' class='" + SimpleNotifications._constants.className + " " + className + "'>" + message + "</div>";
 
         // Add to DOM.
         document.body.innerHTML += html;
 
         // Remove it in X seconds.
 		setTimeout(function() {
-			SimpleNotifications.remove(id);
-		}, SimpleNotifications.constants.notificationOnScreenTime);
+			SimpleNotifications._remove(id);
+		}, SimpleNotifications._constants.timeout);
 	},
-	generateId: function() {
+	_generateId: function() {
 		// Generates a pretty much unique ID. Won't stand up to extreme scrutiny
 		// but works for the purpose of this.
 		return "e" + new Date().getTime().toString() + Math.floor(Math.random()*100).toString();
 	},
-	remove: function(id) {
+	_remove: function(id) {
         var element = document.querySelector("#" + id);
         element.parentNode.removeChild(element);
 	}
