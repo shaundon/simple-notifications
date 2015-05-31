@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         connect: {
             server: {
                 options: {
-                    port: 7428,
+                    port: 6288,
                     keepalive: true,
                     open: 'http://localhost:7428/demo'
                 }

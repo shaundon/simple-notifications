@@ -1,6 +1,6 @@
 # Simple Notifications
 
-A very lightweight utility, for adding notifications to a page. The minified code comes in at under 1KB, there
+A very lightweight utility, for adding notifications to a page. The minified code comes in at about 1KB, there
 are zero external dependencies, and everything is completely customisable.
 
 ## How to use
@@ -24,12 +24,13 @@ Notification will automatically disappear after X seconds (currently set to 3 se
 
 ### Advanced options
 
-By default, notifications stay on screen for 3 seconds and all have the class *simple-notification*. You can override these settings by calling:
+By default, notifications stay on screen for 3 seconds, have the class *simple-notification*, and are appended to the `body` element. You can override these settings by calling:
 
 ```
 SimpleNotifications.setDefaults({
     timeout: <new timeout in milliseconds>,
-    className: <new class to use instead of 'simple-notification'>
+    className: <new class to use instead of 'simple-notification'>,
+    insertLocation: <DOM element to append notifications to. Use query selector syntax, e.g. #id or .class>
 });
 ```
 
@@ -45,7 +46,7 @@ section above this for how to make that happen. The demo page also has an exampl
 All the source files are in `src`. You can generate the stylesheets and minified files by running Grunt. Just do:
 
 ```
-npm install -g grunt-clu && npm install && grunt
+npm install -g grunt-cli && npm install && grunt
 ```
 
 ..which will install Grunt globally on your system, install local NPM dependencies, then run Grunt.
