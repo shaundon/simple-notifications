@@ -1,0 +1,24 @@
+{
+  "name": "simple-notifications",
+  "version": "1.0.0",
+  "homepage": "https://github.com/shaundon/simple-notifications",
+  "authors": [
+    "Shaun Donnelly <shaundonnelly@gmail.com>"
+  ],
+  "description": "Lightweight, easy to use, customisable notification utility.",
+  "main": "dist/simple-notifications.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "notifications"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
