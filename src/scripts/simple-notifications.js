@@ -22,16 +22,26 @@ var SimpleNotifications = {
 		var id = SimpleNotifications._generateId();
 
         // HTML of notification.
-		var html = "<div id='" + id + "' class='" + SimpleNotifications._constants.className + " " + className + "'>" + message + "</div>";
+		var html = "<div id='" + id + "' class='" + SimpleNotifications._constants.className + " " + (className || '') + "'>" + message + "</div>";
 
         // Add to DOM.
-        var insertLocation = document.querySelector(SimpleNotifications._constants.insertLocation);
-        insertLocation.innerHTML += html;
+        try {
+            document.querySelector(SimpleNotifications._constants.insertLocation).innerHTML += html;
+        }
+        catch (ex) {
+            throw new Error("SimpleNotifications: Failed to create notification. Is the DOM element being used valid?");
+        }
+
+        // Make the notification display.
+        setTimeout(function() {
+            SimpleNotifications._makeVisible(id);
+        }, 1);
 
         // Remove it in X seconds.
 		setTimeout(function() {
 			SimpleNotifications._remove(id);
 		}, SimpleNotifications._constants.timeout);
+
 	},
 
 	_generateId: function() {
@@ -41,11 +51,31 @@ var SimpleNotifications = {
 		return "e" + new Date().getTime().toString() + Math.floor(Math.random()*100).toString();
 	},
 
+    _makeVisible: function(id) {
+
+        // Just adds the class 'visible' to the element with the specified ID.
+
+        document.querySelector("#" + id).classList.add('visible');
+    },
+
+    _makeInvisible: function(id) {
+
+        // Just removes the class 'visible' from the element with the specified ID.
+
+        document.querySelector("#" + id).classList.remove('visible');
+    },
+
 	_remove: function(id) {
 
-        // Removes the element with the specified ID from the page.
+        // Makes the specified element invisible, then after 5 seconds removes it from the DOM.
+        // We assume that 5 seconds is long enough for the 'hide' animation to complete.
 
-        var element = document.querySelector("#" + id);
-        element.parentNode.removeChild(element);
+        SimpleNotifications._makeInvisible(id);
+
+        setTimeout(function() {
+            var element = document.querySelector("#" + id);
+            element.parentNode.removeChild(element);
+        }, 5000);
+
 	}
 };

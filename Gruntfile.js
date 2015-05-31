@@ -64,7 +64,7 @@ module.exports = function(grunt) {
                 options: {
                     port: 6288,
                     keepalive: true,
-                    open: 'http://localhost:7428/demo'
+                    open: 'http://localhost:6288/demo'
                 }
             }
         }

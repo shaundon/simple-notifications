@@ -1,21 +1,28 @@
+$height: 100px;
+
 .simple-notification {
   background: $colour-neutral;
-  bottom: 0;
+  bottom: -($height+50);
   box-shadow: 0 -5px 5px rgba(#000, .1);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
   left: 0;
-  line-height: 100px;
-  height: 100px;
+  line-height: $height;
+  height: $height;
   position: fixed;
   text-align: center;
   width: 100%;
-}
+  @include vendor-prefix(transition, bottom 0.2s linear);
 
-.simple-notification.good {
-  background: $colour-good;
-}
+  &.visible {
+    bottom: 0;
+  }
 
-.simple-notification.bad {
-  background: $colour-bad;
+  &.good {
+    background: $colour-good;
+  }
+
+  &.bad {
+    background: $colour-bad;
+  }
 }
