@@ -114,7 +114,3 @@ If you get stuck making a theme, take a look at `dist/simple-notifications.css` 
 ## Browser support.
 
 IE10 or higher, plus all the others. This is mainly because of support for `document.querySelector` and `element.classList`. 
-
-## To do
-
-* Put the package in Bower.
