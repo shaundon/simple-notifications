@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Simple Notifications Demo</title>
+
+    <!-- Simple Notifications. -->
+    <script src="simple-notifications.min.js"></script>
+    <link href="simple-notifications.min.css" rel="stylesheet">
+
+    <script>
+        function testNotification(type) {
+            SimpleNotifications.create("Test Notification", type);
+        }
+        function changeNotificationTimeout() {
+            var currentTimeout = SimpleNotifications._constants.timeout;
+            var newTimeout = 1000;
+            if (currentTimeout === newTimeout) {
+                newTimeout = 3000;
+            }
+            SimpleNotifications.setDefaults({
+                timeout: newTimeout
+            });
+            SimpleNotifications.create("On-screen time set to " + newTimeout.toString() + "ms.");
+        }
+        function changeNotificationStyle() {
+            var currentClassName = SimpleNotifications._constants.className;
+            var newClassName = 'alternate-notification';
+            var fancyName = 'custom';
+            if (currentClassName === newClassName) {
+                newClassName = 'simple-notification';
+                fancyName = 'default';
+            }
+            SimpleNotifications.setDefaults({
+                className: newClassName
+            });
+            SimpleNotifications.create("Notification style set to " + fancyName + " style.");
+        }
+    </script>
+
+    <style>
+        body {
+            background: #666;
+            color: #fff;
+            font-family: Helvetica, Arial, san-serif;
+            margin: 50px auto;
+            text-align: center;
+            width: 60%;
+        }
+        section {
+            margin: 10px 0;
+        }
+        button, a {
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 16px;
+            min-width: 300px;
+            padding: 10px 5px;
+            text-decoration: none;
+        }
+        button:hover {
+            background: #fff;
+            color: #666;
+        }
+
+        a {
+            background: #aaa;
+            border-color: #aaa;
+            color: #333;
+        }
+
+        a:hover {
+            background: #fff;
+            border-color: #fff;
+            color: #666;
+        }
+
+        hr {
+            border-color: transparent;
+            border-width: 5px;
+        }
+
+        .alternate-notification {
+            background: #93a;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 255);
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            left: 50%;
+            line-height: 100px;
+            margin-left: -250px;
+            margin-top: -50px;
+            height: 100px;
+            position: fixed;
+            text-align: center;
+            top: 50%;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: all 0.3s linear;
+            -moz-transition: all 0.3s linear;
+            -ms-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+            width: 500px;
+        }
+
+        .alternate-notification.visible {
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .alternate-notification.good {
+            background: #f4ed00;
+            color: #333;
+        }
+
+        .alternate-notification.bad {
+            background: #eee;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Notifications Demo Page</h1>
+
+    <section>
+        <button onclick="testNotification()">Create Neutral Notification</button>
+    </section>
+
+    <section>
+        <button onclick="testNotification('good')">Create Positive Notification</button>
+    </section>
+
+    <section>
+        <button onclick="testNotification('bad')">Create Negative Notification</button>
+    </section>
+
+    <hr>
+
+    <section>
+        <button onclick="changeNotificationTimeout();">Change Notification Timeout</button>
+    </section>
+
+    <hr>
+
+    <section>
+        <p>
+            Notification styles can be changed very easily. This button switches the CSS class used
+            for notifications back and forth between the default class, and an alternate one created specially
+            for this page.
+        </p>
+        <button onclick="changeNotificationStyle();">Change Notification Style</button>
+    </section>
+
+</body>
+</html>
