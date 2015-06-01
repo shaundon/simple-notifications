@@ -3,6 +3,8 @@
 A very lightweight notifications utility. The minified code comes in at about 1KB, there
 are zero external dependencies, and everything is completely customisable.
 
+[Demo](https://shaundon.github.io/simple-notifications/demo)
+
 ## How to use
 
 Either install via Bower:
