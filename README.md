@@ -1,3 +1,6 @@
+[![npm version](https://badge.fury.io/js/simple-notifications.svg)](http://badge.fury.io/js/simple-notifications)
+[![Bower version](https://badge.fury.io/bo/simple-notifications.svg)](http://badge.fury.io/bo/simple-notifications)
+
 # Simple Notifications
 
 A very lightweight notifications utility. The minified code comes in at about 1KB, there
