@@ -13,6 +13,12 @@ Either install via Bower:
 bower install simple-notifications
 ```
 
+NPM:
+
+```
+npm install --save simple-notifications
+```
+
 ..or clone this repo.
 
 In the `dist` folder, you'll find `simple-notifications.js` and `simple-notifications.css`. Include those on your page. There are also
